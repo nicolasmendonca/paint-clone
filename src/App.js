@@ -1,26 +1,30 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import FiltrosDragger from './components/filtros-dragger/FiltrosDragger';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const contenido = useRef(null);
+	const handleImageClicked = (image, xPos, yPos) => {
+		const newImage = document.createElement('img');
+		newImage.setAttribute('src', image);
+		yPos += 'px';
+		xPos += 'px';
+		newImage.setAttribute(
+			'style',
+			`position:absolute;top:${yPos};left:${xPos};width:300px;transform:translate3D(-50%,-50%,0)`
+		);
+		// document.getElementById('asdsa').append
+		contenido.current.append(newImage);
+		// contenido.current.append(`
+		//   <img src="${image}" style="position:absolute;top:${yPos};left:${xPos};width:300px;"/>
+		// `);
+	};
+	return (
+		<div className="App" ref={contenido}>
+			<FiltrosDragger onImageClick={handleImageClicked} />
+		</div>
+	);
 }
 
 export default App;
