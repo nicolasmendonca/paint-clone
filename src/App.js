@@ -12,7 +12,7 @@ function App() {
 		xPos += 'px';
 		newImage.setAttribute(
 			'style',
-			`position:absolute;top:${yPos};left:${xPos};width:300px;transform:translate3D(-50%,-50%,0)`
+			`position:absolute;top:${yPos};left:${xPos};width:300px;transform:translate3D(-50%,-50%,0);z-index: -5;`
 		);
 		// document.getElementById('asdsa').append
 		contenido.current.append(newImage);
